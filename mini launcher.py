@@ -6,6 +6,8 @@ from tkinter import ttk
 from io import BytesIO
 import threading
 import hashlib
+import shutil
+
 
 # ===== CONFIG =====
 MANIFEST_URL = "https://petrus132.github.io/mini-launcher/launcher/manifest.json"
@@ -101,6 +103,7 @@ class Launcher:
 
     # ===== INSTALL =====
     def install(self, key, cfg):
+        print("installing")
         threading.Thread(target=self._install, args=(key,cfg), daemon=True).start()
 
     def _install(self, key, cfg):
@@ -130,6 +133,21 @@ class Launcher:
 
         self.render()
 
+
+
+
+    def uninstall(self, key, cfg):
+        path = os.path.join(APPS_DIR, key)
+        try:
+            # Remove folder and all its contents
+            shutil.rmtree(path)
+            print("game/program removed successfully")
+        except OSError as e:
+            print("Error: %s - %s." % (e.filename, e.strerror))
+        self.render()
+
+
+        
     # ===== PLAY =====
     def play(self, key):
         path = os.path.join(APPS_DIR, key)
@@ -143,6 +161,7 @@ class Launcher:
 
     # 🔥 KLUCZ: uruchom przez systemowy python (nie Thonny)
         os.startfile(py)
+        print(py)
     # ===== UI =====
     def render(self):
         for w in self.frame.winfo_children():
@@ -182,6 +201,14 @@ class Launcher:
                 tk.Button(card, text="UPDATE",
                           bg=WARN, fg="black",
                           command=lambda k=key,g=g: self.smart_update(k,g)).pack(pady=3)
+                
+                tk.Button(card, text="UNINSTALL",
+                          bg=WARN, fg="black",
+                          command=lambda k=key,g=g: self.uninstall(k,g)).pack(pady=3)
+
+
+
+                
             else:
                 tk.Button(card, text="INSTALL",
                           bg=ACCENT, fg="black",
