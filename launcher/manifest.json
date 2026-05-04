@@ -3,7 +3,7 @@
     "name": "Platformer 2D",
     "base_url": "https://petrus132.github.io/mini-launcher/platformer2d",
     "icon": "icon.png",
-    "description": "Skacz i zbieraj monety",
+    "description": "Skacz i przechodź levele ☺",
     "files": [
       "main.py",
       "info.txt",
