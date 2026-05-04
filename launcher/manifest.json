@@ -9,5 +9,16 @@
       "info.txt",
       "changelog.txt"
     ]
+  },
+  "zgadywanka": {
+    "name": "zgadywanka",
+    "base_url": "https://petrus132.github.io/mini-launcher/zgadywanka",
+    "icon": "icon.png",
+    "description": "zgadnij losową liczbę od 0 - 10y",
+    "files": [
+      "main.py",
+      "info.txt",
+      "changelog.txt"
+    ]
   }
 }
