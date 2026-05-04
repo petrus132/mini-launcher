@@ -3,7 +3,6 @@ import json
 import requests
 import tkinter as tk
 from tkinter import ttk
-from PIL import Image, ImageTk
 from io import BytesIO
 import threading
 import hashlib
