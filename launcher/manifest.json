@@ -7,8 +7,7 @@
     "files": [
       "main.py",
       "info.txt",
-      "changelog.txt",
-      "icon.png"
+      "changelog.txt"
     ]
   }
 }
