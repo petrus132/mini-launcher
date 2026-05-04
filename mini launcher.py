@@ -134,17 +134,15 @@ class Launcher:
     def play(self, key):
         path = os.path.join(APPS_DIR, key)
 
-        # najpierw .exe jeśli jest
         exe = os.path.join(path, "start.exe")
         if os.path.exists(exe):
             os.startfile(exe)
             return
 
-        # fallback na main.py
         py = os.path.join(path, "main.py")
-        if os.path.exists(py):
-            os.startfile(py)
 
+    # 🔥 KLUCZ: uruchom przez systemowy python (nie Thonny)
+        os.system(f'python "{py}"')
     # ===== UI =====
     def render(self):
         for w in self.frame.winfo_children():
