@@ -142,7 +142,7 @@ class Launcher:
         py = os.path.join(path, "main.py")
 
     # 🔥 KLUCZ: uruchom przez systemowy python (nie Thonny)
-        os.system(f'python "{py}"')
+        os.startfile(py)
     # ===== UI =====
     def render(self):
         for w in self.frame.winfo_children():
