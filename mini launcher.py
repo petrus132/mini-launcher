@@ -132,13 +132,20 @@ class Launcher:
         self.render()
 
     # ===== PLAY =====
-   PYTHON = r"C:\Users\pwpia\AppData\Local\Programs\Python\Python313\python.exe"
-
     def play(self, key):
         path = os.path.join(APPS_DIR, key)
-        game_file = os.path.join(path, "main.py")
 
-        subprocess.Popen([PYTHON, game_file], cwd=path)
+        # najpierw .exe jeśli jest
+        exe = os.path.join(path, "start.exe")
+        if os.path.exists(exe):
+            os.startfile(exe)
+            return
+
+        # fallback na main.py
+        py = os.path.join(path, "main.py")
+        if os.path.exists(py):
+            os.startfile(py)
+
     # ===== UI =====
     def render(self):
         for w in self.frame.winfo_children():
