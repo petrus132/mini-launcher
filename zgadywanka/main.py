@@ -1,6 +1,8 @@
 import random
 import time
 
+print("start")
+
 liczba = random.randint(1, 50)
 gamewin = False
 proby = 10
