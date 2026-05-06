@@ -49,6 +49,14 @@ def draw_text(text, x, y):
 
 # ===== GAME LOOP =====
 running = True
+start = False
+while start != True:
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                bird_vel = jump
+                start = True
+                break
 while running:
     clock.tick(60)
     screen.fill(BLUE)
