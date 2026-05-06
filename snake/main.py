@@ -39,7 +39,7 @@ while start != True:
             if event.key == pygame.K_SPACE:
                 start = True
                 break
-    screen.fill(BLUE)
+    screen.fill(BLACK)
     draw_text(f"Click space to  start", 100, HEIGHT // 2)
     # RURY
     pygame.display.update()
