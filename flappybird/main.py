@@ -91,7 +91,7 @@ while running:
                 running = False
 
         # punkt
-        if pipe["x"] + pipe_width == bird_x:
+        if pipe["x"] + pipe_width <= bird_x & pipe["x"] + pipe_width >= bird_x - 1:
             score += 1
 
     # usuń stare rury
