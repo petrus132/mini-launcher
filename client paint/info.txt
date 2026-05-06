@@ -1,1 +1,3 @@
-
+name: Platformer 2D
+version: 1.0.0
+author: Twoj Nick
