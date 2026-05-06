@@ -63,7 +63,7 @@ while start != True:
     draw_text(f"Click space to  start", 100, HEIGHT // 2)
     # RURY
     for pipe in pipes:
-        pipe["x"] -= pipe_speed
+        
 
         # górna
         pygame.draw.rect(screen, GREEN,
@@ -73,6 +73,7 @@ while start != True:
         pygame.draw.rect(screen, GREEN,
             (pipe["x"], pipe["height"] + pipe_gap,
              pipe_width, HEIGHT))
+    pygame.display.update()
 
 while running:
     clock.tick(60)
