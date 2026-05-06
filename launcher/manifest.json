@@ -20,5 +20,11 @@
       "info.txt",
       "changelog.txt"
     ]
+  },
+  "flappybird": {
+  "name": "Flappy Bird",
+  "base_url": "https://petrus132.github.io/mini-launcher/flappybird",
+  "description": "Klikaj spacją i nie uderz w rury",
+  "files": ["main.py", "info.txt", "changelog.txt"]
   }
 }
