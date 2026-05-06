@@ -31,6 +31,20 @@ def draw_text(t, x, y):
     screen.blit(font.render(t, True, WHITE), (x,y))
 
 running = True
+start = False
+while start != True:
+    clock.tick(60)
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                start = True
+                break
+    screen.fill(BLUE)
+    draw_text(f"Click space to  start", 100, HEIGHT // 2)
+    # RURY
+    pygame.display.update()
+
+
 while running:
     clock.tick(10)
     screen.fill(BLACK)
