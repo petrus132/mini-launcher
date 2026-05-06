@@ -57,6 +57,21 @@ while start != True:
                 bird_vel = jump
                 start = True
                 break
+    pygame.draw.rect(screen, YELLOW, (bird_x, int(bird_y), bird_size, bird_size))
+    draw_text(f"Click space to  start", 100, HEIGHT // 2)
+    # RURY
+    for pipe in pipes:
+        pipe["x"] -= pipe_speed
+
+        # górna
+        pygame.draw.rect(screen, GREEN,
+            (pipe["x"], 0, pipe_width, pipe["height"]))
+
+        # dolna
+        pygame.draw.rect(screen, GREEN,
+            (pipe["x"], pipe["height"] + pipe_gap,
+             pipe_width, HEIGHT))
+
 while running:
     clock.tick(60)
     screen.fill(BLUE)
