@@ -57,6 +57,7 @@ while start != True:
                 bird_vel = jump
                 start = True
                 break
+    screen.fill(BLUE)
     pygame.draw.rect(screen, YELLOW, (bird_x, int(bird_y), bird_size, bird_size))
     draw_text(f"Click space to  start", 100, HEIGHT // 2)
     # RURY
