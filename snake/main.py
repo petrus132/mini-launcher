@@ -36,17 +36,20 @@ while start != True:
     clock.tick(60)
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
+            if event.key == pygame.K_SPACE or event.key == pygame.K_:
                 start = True
                 break
     screen.fill(BLACK)
     draw_text(f"Click space to  start", 100, HEIGHT // 2)
     # RURY
+    for s in snake:
+        pygame.draw.rect(screen, GREEN, (*s, 20, 20))for s in snake:
+        pygame.draw.rect(screen, GREEN, (*s, 20, 20))
     pygame.display.update()
 
 
 while running:
-    clock.tick(10)
+    clock.tick(5)
     screen.fill(BLACK)
 
     # EVENTY
