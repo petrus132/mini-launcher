@@ -43,7 +43,6 @@ while start != True:
     draw_text(f"Click space to  start", 100, HEIGHT // 2)
     # RURY
     for s in snake:
-        pygame.draw.rect(screen, GREEN, (*s, 20, 20))for s in snake:
         pygame.draw.rect(screen, GREEN, (*s, 20, 20))
     pygame.display.update()
 
