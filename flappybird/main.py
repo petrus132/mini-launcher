@@ -51,6 +51,7 @@ def draw_text(text, x, y):
 running = True
 start = False
 while start != True:
+    clock.tick(60)
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
