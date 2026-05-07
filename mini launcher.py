@@ -9,6 +9,8 @@ import hashlib
 import shutil
 
 
+PYTHON = r"C:\Users\pwpia\AppData\Local\Programs\Python\Python313\python.exe"
+
 # ===== CONFIG =====
 MANIFEST_URL = "https://petrus132.github.io/mini-launcher/launcher/manifest.json"
 APPS_DIR = os.path.join(os.getenv('APPDATA'), "MyLauncher")
@@ -149,19 +151,13 @@ class Launcher:
 
         
     # ===== PLAY =====
+    
+
     def play(self, key):
         path = os.path.join(APPS_DIR, key)
-
-        exe = os.path.join(path, "start.exe")
-        if os.path.exists(exe):
-            os.startfile(exe)
-            return
-
         py = os.path.join(path, "main.py")
 
-    # 🔥 KLUCZ: uruchom przez systemowy python (nie Thonny)
-        os.startfile(py)
-        print(py)
+        os.system(f'start cmd /c "{PYTHON} {py}"')
     # ===== UI =====
     def render(self):
         for w in self.frame.winfo_children():
@@ -178,14 +174,7 @@ class Launcher:
             card.pack_propagate(False)
 
             # ICON
-            try:
-                r = requests.get(f"{g['base_url']}/{g.get('icon','')}")
-                img = Image.open(BytesIO(r.content)).resize((120,120))
-                img = ImageTk.PhotoImage(img)
-                self.images[key] = img
-                tk.Label(card, image=img, bg=CARD).pack()
-            except:
-                pass
+            
 
             tk.Label(card, text=g["name"], fg=TEXT,
                      bg=CARD, font=("Segoe UI", 11, "bold")).pack()
@@ -214,8 +203,34 @@ class Launcher:
                           bg=ACCENT, fg="black",
                           command=lambda k=key,g=g: self.install(k,g)).pack(pady=5)
 
+            icon_name = g.get("icon")
+
+            if icon_name:  # tylko jeśli w ogóle jest wpisane w manifest
+                try:
+                    url = f"{g['base_url']}/{icon_name}"
+                    r = requests.get(url, timeout=3)
+
+                    # 🔥 sprawdzamy czy to faktycznie obraz
+                    if r.status_code == 200 and "image" in r.headers.get("Content-Type",""):
+
+                        from PIL import Image, ImageTk
+                        img = Image.open(BytesIO(r.content)).resize((100,100))
+                        img = ImageTk.PhotoImage(img)
+                        self.images[key] = img
+
+                        tk.Label(card, image=img, bg=CARD).pack(pady=5)
+
+                    else:
+                        print(f"Brak ikonki dla {key}")
+
+                except:
+                    print(f"Nie udało się pobrać ikonki: {key}")
+
+
+            
+            
             col += 1
-            if col >= 4:
+            if col >= 3:
                 col = 0
                 row += 1
 
