@@ -43,6 +43,6 @@
   "name": "snake",
   "base_url": "https://petrus132.github.io/mini-launcher/snake",
   "description": "classic snake",
-  "files": ["main.py", "info.txt", "changelog.txt"]
+  "files": ["main.py", "info.txt", "changelog.txt", "snake_icon.png"]
   }
 }
